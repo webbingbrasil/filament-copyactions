@@ -1,0 +1,33 @@
+{
+    "name": "webbingbrasil/filament-copyactions",
+    "description": "A easy-to-use copy actions for Filament Admin.",
+    "keywords": [
+        "laravel",
+        "filament"
+    ],
+    "homepage": "https://github.com/webbingbrasil/filament-copyactions",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Danilo Andrade",
+            "email": "danilo@webbingbrasil.com.br",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "filament/filament": "^2.15"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Webbingbrasil\\FilamentCopyActions\\": "src"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
