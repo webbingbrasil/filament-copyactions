@@ -4,6 +4,7 @@ namespace Webbingbrasil\FilamentCopyActions;
 
 use Filament\Facades\Filament;
 use Illuminate\Support\HtmlString;
+use Webbingbrasil\FilamentCopyActions\Forms\Actions\CopyAction;
 use function Filament\get_asset_id;
 use Filament\Navigation\UserMenuItem;
 use Filament\PluginServiceProvider;
@@ -29,5 +30,7 @@ class FilamentCopyActionsProvider extends PluginServiceProvider
                 });
             </script>
         "));
+
+        CopyAction::configureUsing(fn (CopyAction $action) => $action->copyable(fn ($component) => $component->getState()));
     }
 }
