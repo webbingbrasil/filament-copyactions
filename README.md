@@ -111,3 +111,4 @@ The action will display a copy status, you can customize the success message wit
 
 -   [Danilo Andrade](https://github.com/dmandrade)
 
+custom table column with copy button and actions to use with any form field, page or table. Actions display a filament notification for status.
