@@ -107,8 +107,6 @@ protected function getActions(): array
 
 The action will display a copy status, you can customize the success message with the `successNotificationMessage` method or the error message with the `errorNotificationMessage` method.
 
-```php
-
 ## Credits
 
 -   [Danilo Andrade](https://github.com/dmandrade)
