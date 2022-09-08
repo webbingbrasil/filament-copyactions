@@ -8,8 +8,15 @@ trait HasCopyable
 {
     protected Closure | string | null $copyable = null;
 
+    public static function getDefaultName(): ?string
+    {
+        return 'copy';
+    }
+
     public function setUp(): void
     {
+        parent::setUp();
+
         $this
             ->successNotificationMessage(__('Copied to clipboard'))
             ->failureNotificationMessage(__('No data to copy'))
