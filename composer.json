@@ -25,6 +25,13 @@
             "Webbingbrasil\\FilamentCopyActions\\": "src"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Webbingbrasil\\FilamentCopyActions\\FilamentCopyActionsProvider"
+            ]
+        }
+    },
     "config": {
         "sort-packages": true
     },
