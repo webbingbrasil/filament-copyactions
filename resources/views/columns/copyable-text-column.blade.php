@@ -3,7 +3,7 @@
     $copyableText = $getCopyableText();
     $descriptionAbove = $getDescriptionAbove();
     $descriptionBelow = $getDescriptionBelow();
-    $buttonColor = $getButtonColor();
+    $iconColor = $getIconColor();
     $success = $getSuccess();
 
     $icon = $getIcon();
@@ -25,7 +25,7 @@
                 <x-filament-copyactions::copy-button
                     :success="$success"
                     :content="$copyableText"
-                    :buttonColor="$buttonColor"
+                    :iconColor="$iconColor"
                     :icon="$icon" />
             @endif
 
@@ -49,7 +49,7 @@
                 <x-filament-copyactions::copy-button
                     :success="$success"
                     :content="$copyableText"
-                    :buttonColor="$buttonColor"
+                    :iconColor="$iconColor"
                     :icon="$icon" />
             @endif
         </div>

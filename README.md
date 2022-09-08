@@ -29,14 +29,19 @@ CopyableTextColumn::make('brand.name')
     ->toggleable(),
 ```
 
-You can customize the success message with the `successMessage` method, the default message is `Copied!`
-
 The column has a option to display a description above ou below the text, by default this description is not copied, if you want to copy the description too, use the `copyWithDescription` method
 
+#### Success message
+
+You can customize the success message with the `successMessage` method, the default message is `Copied!`
+
+#### Button Icon and Color
+
+You can customize the button icon and color with the `icon` and `iconColor` methods
 
 ### Table Action
 
-Display a table action button, you set the content using `copyable` method.
+Display a table action button, you set the content using `copyable` method. You can customize the button icon/color using the same methods of the [Filament Action](https://filamentphp.com/docs/2.x/tables/actions#setting-a-color).
 
 ```php
 use Webbingbrasil\FilamentCopyActions\Tables\Actions\CopyAction;
@@ -47,11 +52,14 @@ $table
     ])
 ```
 
+#### Success message
+
 The action will display a copy status, you can customize the success message with the `successNotificationMessage` method or the error message with the `errorNotificationMessage` method.
+
 
 ### Form Action
 
-If you want to copy a field value, use the `CopyAction` in your field suffix or prefix.
+If you want to copy a field value, use the `CopyAction` in your field suffix or prefix. You can customize the button icon/color using the same methods of the [Filament Action](https://filamentphp.com/docs/2.x/tables/actions#setting-a-color).
 
 ```php
 use Webbingbrasil\FilamentCopyActions\Forms\Actions\CopyAction;
@@ -69,7 +77,6 @@ Forms\Components\Select::make('shop_brand_id')
 
 You can use this form action in any filament field, the action will copy the field value to clipboard by default, but you can customize the value with the `copyable` method
 
-The action will display a copy status, you can customize the success message with the `successNotificationMessage` method or the error message with the `errorNotificationMessage` method.
 
 ```php
 
@@ -79,9 +86,13 @@ Forms\Components\Select::make('shop_brand_id')
     ->searchable();
 ```
 
+#### Success message
+
+The action will display a copy status, you can customize the success message with the `successNotificationMessage` method or the error message with the `errorNotificationMessage` method.
+
 ### Page Action
 
-You can add `CopyAction` buttom to any page in filament, just put the action in the `actions` method of the page. 
+You can add `CopyAction` buttom to any page in filament, just put the action in the `actions` method of the page. You can customize the button icon/color using the same methods of the [Filament Action](https://filamentphp.com/docs/2.x/tables/actions#setting-a-color).
 
 ```php
 use Webbingbrasil\FilamentCopyActions\Pages\Actions\CopyAction;

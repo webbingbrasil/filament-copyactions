@@ -9,7 +9,7 @@ class CopyableTextColumn extends TextColumn
 {
     protected string | Closure | null $icon = 'heroicon-o-clipboard-copy';
 
-    protected string | Closure | null $copyButtonColor = null;
+    protected string | Closure | null $copyIconColor = null;
 
     protected string | Closure | null $iconPosition = null;
 
@@ -61,16 +61,16 @@ class CopyableTextColumn extends TextColumn
         return $this;
     }
 
-    public function buttonColor(string | Closure $copyButtonColor): static
+    public function iconColor(string | Closure $copyIconColor): static
     {
-        $this->copyButtonColor = $copyButtonColor;
+        $this->copyIconColor = $copyIconColor;
 
         return $this;
     }
 
     public function getButtonColor(): ?string
     {
-        return $this->evaluate($this->copyButtonColor);
+        return $this->evaluate($this->copyIconColor);
     }
 
     public function getIcon(): string
