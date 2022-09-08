@@ -1,9 +1,10 @@
 @php
     $state = $getFormattedState();
     $copyableText = $getCopyableText();
-    $description = $getDescription();
-    $descriptionPosition = $getDescriptionPosition();
+    $descriptionAbove = $getDescriptionAbove();
+    $descriptionBelow = $getDescriptionBelow();
     $buttonColor = $getButtonColor();
+    $success = $getSuccess();
 
     $icon = $getIcon();
     $iconPosition = $getIconPosition();
@@ -22,32 +23,34 @@
         ])>
             @if ($icon && $iconPosition === 'before')
                 <x-filament-copyactions::copy-button
+                    :success="$success"
                     :content="$copyableText"
                     :buttonColor="$buttonColor"
                     :icon="$icon" />
             @endif
 
             <div>
-
-                @if (filled($description) && $descriptionPosition === 'above')
+                @if (filled($descriptionAbove))
                     <span class="block text-sm text-gray-400">
-                        {{ $description instanceof \Illuminate\Support\HtmlString ? $description : \Illuminate\Support\Str::of($description)->markdown()->sanitizeHtml()->toHtmlString() }}
+                        {{ $descriptionAbove instanceof \Illuminate\Support\HtmlString ? $descriptionAbove : \Illuminate\Support\Str::of($descriptionAbove)->markdown()->sanitizeHtml()->toHtmlString() }}
                     </span>
                 @endif
+
                 {{ $state }}
 
-                @if (filled($description) && $descriptionPosition === 'below')
+                @if (filled($descriptionBelow))
                     <span class="block text-sm text-gray-400">
-                        {{ $description instanceof \Illuminate\Support\HtmlString ? $description : \Illuminate\Support\Str::of($description)->markdown()->sanitizeHtml()->toHtmlString() }}
+                        {{ $descriptionBelow instanceof \Illuminate\Support\HtmlString ? $descriptionBelow : \Illuminate\Support\Str::of($descriptionBelow)->markdown()->sanitizeHtml()->toHtmlString() }}
                     </span>
                 @endif
             </div>
 
             @if ($icon && $iconPosition === 'after')
-                    <x-filament-copyactions::copy-button
-                        :content="$copyableText"
-                        :buttonColor="$buttonColor"
-                        :icon="$icon" />
+                <x-filament-copyactions::copy-button
+                    :success="$success"
+                    :content="$copyableText"
+                    :buttonColor="$buttonColor"
+                    :icon="$icon" />
             @endif
         </div>
     @endif

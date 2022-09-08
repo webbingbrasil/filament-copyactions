@@ -1,6 +1,7 @@
-@prop([
+@props([
     'content',
     'buttonColor',
+    'success',
     'icon' => 'heroicon-o-clipboard-copy'
 ])
 @php
@@ -24,13 +25,13 @@
     x-data="{ open: false, clicked: false }"
     x-on:mouseover="open = true"
     x-on:mouseover.outside="open = false; clicked = false"
-    x-on:click.prevent="$dispatch('clipboard', '{{$content}}'); clicked = true"
+    x-on:click.prevent="$dispatch('clipboard', '{{addslashes($content)}}'); clicked = true"
     @class($buttonClasses)
 >
     <x-dynamic-component :component="$icon" :class="$iconClasses" x-show="!clicked"  />
     <x-heroicon-o-check x-show="clicked" @class([$iconClasses, 'text-success-500'])
     x-tooltip="{
-                                    content: '{{ __('Copied!') }}',
+                                    content: '{{ $success }}',
                                     placement: 'right',
                                     onHidden: () => { clicked = false ;}
                                 }"/>

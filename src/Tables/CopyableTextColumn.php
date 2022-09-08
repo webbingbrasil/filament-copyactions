@@ -15,20 +15,32 @@ class CopyableTextColumn extends TextColumn
 
     protected bool | Closure $copyWithDescription = false;
 
+    protected string | Closure | null $successNotificationMessage = 'Copied!';
+
     protected string $view = 'filament-copyactions::columns.copyable-text-column';
+
+
+    public function successMessage(string | Closure | null $message): static
+    {
+        $this->successNotificationMessage = $message;
+
+        return $this;
+    }
+
+    public function getSuccess(): string
+    {
+        return $this->evaluate($this->successNotificationMessage);
+    }
 
     public function getCopyableText(): string
     {
         $state = $this->getFormattedState();
         $copyDescription = (bool) $this->evaluate($this->copyWithDescription);
         if ($copyDescription) {
-            $description = $this->getDescription();
-            $descriptionPosition = $this->getDescriptionPosition();
-
             return implode('\r\n', array_filter([
-                filled($description) && $descriptionPosition === 'above' ? $description : '',
+                $this->descriptionAbove(),
                 $state,
-                filled($description) && $descriptionPosition === 'below' ? $description : '',
+                $this->descriptionBelow(),
             ]));
         }
 
