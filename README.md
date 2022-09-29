@@ -1,11 +1,11 @@
 # Filament Copy Actions
 
-A easy-to-use copy actions for Filament Admin
+An easy-to-use copy actions for Filament Admin
 
 - Table action to implement dynamic copy content
 - Form action to use with any field
-- Page action to implement dynamic copy button in any page
-- Custom copy table column to simple copy text content
+- Page action to implement a dynamic copy button on any page
+- Custom copy table column to simply copy text content
 
 ## Installation
 
@@ -17,7 +17,7 @@ composer require webbingbrasil/filament-copyactions
 
 ### Table Column
 
-Display a table text column with a copy button, the column has all features of the [TextColumn](https://filamentphp.com/docs/2.x/tables/columns#text-column) and the copy action send column content to clipboard and display a success tooltip
+Display a table text column with a copy button, the column has all features of the [TextColumn](https://filamentphp.com/docs/2.x/tables/columns#text-column) and the copy action sends column content to the clipboard and displays a success tooltip.
 
 ```php
 use Webbingbrasil\FilamentCopyActions\Tables\CopyableTextColumn;
@@ -26,22 +26,22 @@ CopyableTextColumn::make('brand.name')
     ->successMessage('Brand copied to clipboard')
     ->searchable()
     ->sortable()
-    ->toggleable(),
+    ->toggleable()
 ```
 
-The column has a option to display a description above ou below the text, by default this description is not copied, if you want to copy the description too, use the `copyWithDescription` method
+The column has an option to display a description above or below the text, by default this description is not copied, if you want to copy the description too, use the `copyWithDescription` method instead.
 
 #### Success message
 
-You can customize the success message with the `successMessage` method, the default message is `Copied!`
+You can customize the success message with the `successMessage` method, the default message is `Copied!`.
 
 #### Button Icon and Color
 
-You can customize the button icon and color with the `icon` and `iconColor` methods
+You can customize the button icon and color with the `icon` and `iconColor` methods.
 
 ### Table Action
 
-Display a table action button, you set the content using `copyable` method. You can customize the button icon/color using the same methods of the [Filament Action](https://filamentphp.com/docs/2.x/tables/actions#setting-a-color).
+Display a table action button, you set the content using the `copyable` method. You can customize the button icon/color using the same methods of the [Filament Action](https://filamentphp.com/docs/2.x/tables/actions#setting-a-color).
 
 ```php
 use Webbingbrasil\FilamentCopyActions\Tables\Actions\CopyAction;
@@ -59,7 +59,7 @@ The action will display a copy status, you can customize the success message wit
 
 ### Form Action
 
-If you want to copy a field value, use the `CopyAction` in your field suffix or prefix. You can customize the button icon/color using the same methods of the [Filament Action](https://filamentphp.com/docs/2.x/tables/actions#setting-a-color).
+Use the `CopyAction` in your field suffix or prefix if you want to copy a field value. You can customize the button icon/color using the same methods of the [Filament Action](https://filamentphp.com/docs/2.x/tables/actions#setting-a-color).
 
 ```php
 use Webbingbrasil\FilamentCopyActions\Forms\Actions\CopyAction;
@@ -75,7 +75,7 @@ Forms\Components\Select::make('shop_brand_id')
     ->searchable();
 ```
 
-You can use this form action in any filament field, the action will copy the field value to clipboard by default, but you can customize the value with the `copyable` method
+You can use this form action in any filament field, the action will copy the field value to the clipboard by default, but you can customize the value with the `copyable` method.
 
 
 ```php
@@ -92,7 +92,7 @@ The action will display a copy status, you can customize the success message wit
 
 ### Page Action
 
-You can add `CopyAction` buttom to any page in filament, just put the action in the `actions` method of the page. You can customize the button icon/color using the same methods of the [Filament Action](https://filamentphp.com/docs/2.x/tables/actions#setting-a-color).
+You can add `CopyAction` button to any page in filament, just put the action in the `actions` method of the page. You can customize the button icon/color using the same methods of the [Filament Action](https://filamentphp.com/docs/2.x/tables/actions#setting-a-color).
 
 ```php
 use Webbingbrasil\FilamentCopyActions\Pages\Actions\CopyAction;
