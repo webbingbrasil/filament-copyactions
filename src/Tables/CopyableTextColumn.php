@@ -38,9 +38,9 @@ class CopyableTextColumn extends TextColumn
         $copyDescription = (bool) $this->evaluate($this->copyWithDescription);
         if ($copyDescription) {
             return implode('\r\n', array_filter([
-                $this->descriptionAbove(),
+                $this->getDescriptionAbove(),
                 $state,
-                $this->descriptionBelow(),
+                $this->getDescriptionBelow(),
             ]));
         }
 
@@ -54,13 +54,6 @@ class CopyableTextColumn extends TextColumn
         return $this;
     }
 
-    public function icon(string | Closure $icon): static
-    {
-        $this->icon = $icon;
-
-        return $this;
-    }
-
     public function iconColor(string | Closure $copyIconColor): static
     {
         $this->copyIconColor = $copyIconColor;
@@ -68,18 +61,8 @@ class CopyableTextColumn extends TextColumn
         return $this;
     }
 
-    public function getButtonColor(): ?string
+    public function getIconColor(): ?string
     {
         return $this->evaluate($this->copyIconColor);
-    }
-
-    public function getIcon(): string
-    {
-        return $this->evaluate($this->icon);
-    }
-
-    public function getIconPosition(): string
-    {
-        return $this->evaluate($this->iconPosition) ?? 'before';
     }
 }

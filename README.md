@@ -35,9 +35,9 @@ The column has a option to display a description above ou below the text, by def
 
 You can customize the success message with the `successMessage` method, the default message is `Copied!`
 
-#### Button Icon and Color
+#### Icon Position and Color
 
-You can customize the button icon and color with the `icon` and `iconColor` methods
+You can customize the button icon with the `icon`, `iconPosition` and `iconColor` methods
 
 ### Table Action
 

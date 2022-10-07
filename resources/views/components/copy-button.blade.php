@@ -1,6 +1,6 @@
 @props([
     'content',
-    'buttonColor',
+    'iconColor',
     'success',
     'icon' => 'heroicon-o-clipboard-copy'
 ])
@@ -8,11 +8,11 @@
     $darkMode = config('filament.darkMode');
     $buttonClasses = [
         'flex items-center justify-center rounded-full hover:bg-gray-500/5 focus:outline-none filament-icon-button',
-        'text-primary-500 focus:bg-primary-500/10' => $buttonColor === 'primary',
-        'text-danger-500 focus:bg-danger-500/10' => $buttonColor === 'danger',
-        'text-gray-500 focus:bg-gray-500/10' => $buttonColor === 'secondary',
-        'text-success-500 focus:bg-success-500/10' => $buttonColor === 'success',
-        'text-warning-500 focus:bg-warning-500/10' => $buttonColor === 'warning',
+        'text-primary-500 focus:bg-primary-500/10' => $iconColor === 'primary',
+        'text-danger-500 focus:bg-danger-500/10' => $iconColor === 'danger',
+        'text-gray-500 focus:bg-gray-500/10' => $iconColor === 'secondary',
+        'text-success-500 focus:bg-success-500/10' => $iconColor === 'success',
+        'text-warning-500 focus:bg-warning-500/10' => $iconColor === 'warning',
         'dark:hover:bg-gray-300/5' => $darkMode,
         'w-8 h-8',
     ];
