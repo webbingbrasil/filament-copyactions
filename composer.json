@@ -16,7 +16,7 @@
     ],
     "require": {
         "php": "^8.0",
-        "filament/filament": "^2.15"
+        "filament/filament": "^2.16"
     },
     "require-dev": {
     },
