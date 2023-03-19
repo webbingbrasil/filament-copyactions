@@ -10,6 +10,10 @@ use Spatie\LaravelPackageTools\Package;
 
 class FilamentCopyActionsProvider extends PluginServiceProvider
 {
+    protected array $beforeCoreScripts = [
+        'ClipboardJS' => __DIR__.'/../resources/js/clipboard.min.js',
+    ];
+
     public function configurePackage(Package $package): void
     {
         $package
@@ -22,7 +26,16 @@ class FilamentCopyActionsProvider extends PluginServiceProvider
         Filament::registerRenderHook('scripts.end', fn () => new HtmlString("
             <script>
                 document.addEventListener('clipboard', function (e) {
-                    window.navigator.clipboard.writeText(e.detail);
+                    if (!window.navigator.clipboard) {
+                        ClipboardJS.copy(e.detail);
+                        return;
+                    }
+
+                    window.navigator.clipboard.writeText(e.detail)
+                        .then(function() {})
+                        .catch(function() {
+                            ClipboardJS.copy(e.detail);
+                        });
                 });
             </script>
         "));
