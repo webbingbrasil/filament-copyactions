@@ -32,7 +32,7 @@ class CopyableTextColumn extends TextColumn
         return $this->evaluate($this->successNotificationMessage);
     }
 
-    public function getCopyableText(): string
+    public function getCopyableText(): ?string
     {
         $state = $this->getFormattedState();
         $copyDescription = (bool) $this->evaluate($this->copyWithDescription);
