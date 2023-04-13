@@ -3,6 +3,8 @@
 namespace Webbingbrasil\FilamentCopyActions\Concerns;
 
 use Closure;
+use Illuminate\Support\HtmlString;
+use Illuminate\Support\Js;
 
 trait HasCopyable
 {
@@ -18,12 +20,15 @@ trait HasCopyable
         parent::setUp();
 
         $this
-            ->successNotificationMessage(__('Copied to clipboard'))
-            ->failureNotificationMessage(__('No data to copy'))
+            ->successNotificationTitle(__('Copied!'))
             ->icon('heroicon-o-clipboard-copy')
-            ->action(function (): void {
-                $this->sendToClipboard() ? $this->success() : $this->failure();
-            });
+            ->extraAttributes(fn () => [
+                'x-data' => new HtmlString(Js::from([
+                    'copyable' => $this->getCopyable(),
+                    'successMessage' => $this->getSuccessNotificationTitle(),
+                ])),
+                'x-on:click' => 'window.navigator.clipboard.writeText(copyable); $tooltip(successMessage);'
+            ]);
     }
 
     public function copyable(Closure | string | null $copyable): self
@@ -36,19 +41,5 @@ trait HasCopyable
     public function getCopyable(): ?string
     {
         return $this->evaluate($this->copyable);
-    }
-
-    protected function sendToClipboard(): bool
-    {
-        $copy = $this->getCopyable();
-        if (empty($copy)) {
-            return false;
-        }
-
-        /** @var \Livewire\Component $livewire */
-        $livewire = $this->getLivewire();
-        $livewire->dispatchBrowserEvent('clipboard', $copy);
-
-        return true;
     }
 }
