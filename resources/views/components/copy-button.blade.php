@@ -24,7 +24,7 @@
     x-cloak
     x-data="{ clicked: false }"
     x-on:mouseover.outside="clicked = false"
-    x-on:click.prevent="$dispatch('clipboard', '{{addslashes($content)}}'); clicked = true"
+    x-on:click.prevent="window.navigator.clipboard.writeText(@js($content)); clicked = true"
     @class($buttonClasses)
 >
     <x-dynamic-component :component="$icon" :class="$iconClasses" x-show="!clicked"  />

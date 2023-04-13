@@ -50,7 +50,7 @@ class CopyableTextColumn extends TextColumn
         $state = $this->getFormattedState();
         $copyDescription = (bool) $this->evaluate($this->copyWithDescription);
         if ($copyDescription) {
-            return implode('\r\n', array_filter([
+            $state = implode("\r\n", array_filter([
                 $this->getDescriptionAbove(),
                 $state,
                 $this->getDescriptionBelow(),
