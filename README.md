@@ -32,7 +32,7 @@ CopyableTextColumn::make('brand.name')
     ->toggleable()
 ```
 
-The column has an option to display a description above or below the text, by default this description is not copied, if you want to copy the description too, use the `copyWithDescription` method instead.
+The column has an option to display a description above or below the text, by default this description is not copied, if you want to copy the description too, use the `copyWithDescription` method.
 
 #### Success message
 
@@ -41,6 +41,16 @@ You can customize the success message with the `successMessage` method, the defa
 #### Icon Position and Color
 
 You can customize the icon with the `icon`, `iconPosition` and `iconColor` methods.
+
+#### Only Display Copy Icon
+
+You can display the column hidding the text content and only showing the copy icon: 
+
+```php
+use Webbingbrasil\FilamentCopyActions\Tables\CopyableTextColumn;
+
+CopyableTextColumn::make('brand.name')->onlyIcon()
+```
 
 ### Table Action
 
