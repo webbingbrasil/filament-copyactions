@@ -19,14 +19,6 @@ class FilamentCopyActionsProvider extends PluginServiceProvider
 
     public function packageBooted(): void
     {
-        Filament::registerRenderHook('scripts.end', fn () => new HtmlString("
-            <script>
-                document.addEventListener('clipboard', function (e) {
-                    window.navigator.clipboard.writeText(e.detail);
-                });
-            </script>
-        "));
-
         CopyAction::configureUsing(fn (CopyAction $action) => $action->copyable(fn ($component) => $component->getState()));
     }
 }
