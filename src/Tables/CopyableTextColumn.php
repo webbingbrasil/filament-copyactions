@@ -19,6 +19,19 @@ class CopyableTextColumn extends TextColumn
 
     protected string $view = 'filament-copyactions::columns.copyable-text-column';
 
+    protected bool | Closure $isOnlyIcon = false;
+
+    public function onlyIcon(bool | Closure $isOnlyIcon = true): static
+    {
+        $this->isOnlyIcon = $isOnlyIcon;
+
+        return $this;
+    }
+
+    public function isOnlyIcon(): bool
+    {
+        return $this->evaluate($this->isOnlyIcon);
+    }
 
     public function successMessage(string | Closure | null $message): static
     {

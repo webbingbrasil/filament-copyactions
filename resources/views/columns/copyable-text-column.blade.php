@@ -29,21 +29,23 @@
                     :icon="$icon" />
             @endif
 
-            <div>
-                @if (filled($descriptionAbove))
-                    <span class="block text-sm text-gray-400">
-                        {{ $descriptionAbove instanceof \Illuminate\Support\HtmlString ? $descriptionAbove : \Illuminate\Support\Str::of($descriptionAbove)->markdown()->sanitizeHtml()->toHtmlString() }}
-                    </span>
-                @endif
+            @if(! $isOnlyIcon())
+                <div>
+                    @if (filled($descriptionAbove))
+                        <span class="block text-sm text-gray-400">
+                            {{ $descriptionAbove instanceof \Illuminate\Support\HtmlString ? $descriptionAbove : \Illuminate\Support\Str::of($descriptionAbove)->markdown()->sanitizeHtml()->toHtmlString() }}
+                        </span>
+                    @endif
 
-                {{ $state }}
+                    {{ $state }}
 
-                @if (filled($descriptionBelow))
-                    <span class="block text-sm text-gray-400">
-                        {{ $descriptionBelow instanceof \Illuminate\Support\HtmlString ? $descriptionBelow : \Illuminate\Support\Str::of($descriptionBelow)->markdown()->sanitizeHtml()->toHtmlString() }}
-                    </span>
-                @endif
-            </div>
+                    @if (filled($descriptionBelow))
+                        <span class="block text-sm text-gray-400">
+                            {{ $descriptionBelow instanceof \Illuminate\Support\HtmlString ? $descriptionBelow : \Illuminate\Support\Str::of($descriptionBelow)->markdown()->sanitizeHtml()->toHtmlString() }}
+                        </span>
+                    @endif
+                </div>
+            @endif
 
             @if ($icon && $iconPosition === 'after')
                 <x-filament-copyactions::copy-button
