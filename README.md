@@ -7,7 +7,8 @@ An easy-to-use copy actions for Filament Admin
 - Page action to implement a dynamic copy button on any page
 - Custom copy table column to simply copy text content
 
-> Note: The copy will only work if the user browser supports [Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API). Also, the user must be on a secure context (HTTPS) or localhost.
+> **Note**
+> The copy will only work if the user browser supports [Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API). Also, the user must be on a secure context (HTTPS) or localhost.
 
 ## Installation
 
