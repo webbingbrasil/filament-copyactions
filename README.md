@@ -26,7 +26,7 @@ Display a table text column with a copy button, the column has all features of t
 use Webbingbrasil\FilamentCopyActions\Tables\CopyableTextColumn;
 
 CopyableTextColumn::make('brand.name')
-    ->successMessage('Brand copied to clipboard')
+    ->copyMessage('Brand copied to clipboard')
     ->searchable()
     ->sortable()
     ->toggleable()
@@ -36,7 +36,7 @@ The column has an option to display a description above or below the text, by de
 
 #### Success message
 
-You can customize the success message with the `successMessage` method, the default message is `Copied!`.
+You can customize the success message with the `copyMessage` method, the default message is `Copied!`.
 
 #### Icon Position and Color
 

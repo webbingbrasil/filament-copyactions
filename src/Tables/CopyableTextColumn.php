@@ -33,16 +33,12 @@ class CopyableTextColumn extends TextColumn
         return $this->evaluate($this->isOnlyIcon);
     }
 
+    /**
+     * @deprecated use copyMessage() instead
+     */
     public function successMessage(string | Closure | null $message): static
     {
-        $this->successNotificationMessage = $message;
-
-        return $this;
-    }
-
-    public function getSuccess(): string
-    {
-        return $this->evaluate($this->successNotificationMessage);
+        return $this->copyMessage($message);
     }
 
     public function getCopyableText(): ?string
