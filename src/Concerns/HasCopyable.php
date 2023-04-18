@@ -23,11 +23,7 @@ trait HasCopyable
             ->successNotificationTitle(__('Copied!'))
             ->icon('heroicon-o-clipboard-copy')
             ->extraAttributes(fn () => [
-                'x-data' => new HtmlString(Js::from([
-                    'copyable' => $this->getCopyable(),
-                    'successMessage' => $this->getSuccessNotificationTitle(),
-                ])),
-                'x-on:click' => 'window.navigator.clipboard.writeText(copyable); $tooltip(successMessage);'
+                'x-on:click' => new HtmlString('window.navigator.clipboard.writeText(\''.$this->getCopyable().'\'); $tooltip(\''.$this->getSuccessNotificationTitle().'\');')
             ]);
     }
 
