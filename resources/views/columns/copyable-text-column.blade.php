@@ -87,7 +87,7 @@
 
             @if ($icon && $iconPosition === 'after')
                 <x-filament-copyactions::copy-button
-                    :success="$success"
+                    :success="$copyMessage"
                     :content="$copyableText"
                     :iconColor="$iconColor"
                     :icon="$icon" />
