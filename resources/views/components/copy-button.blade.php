@@ -28,10 +28,13 @@
     @class($buttonClasses)
 >
     <x-dynamic-component :component="$icon" :class="$iconClasses" x-show="!clicked"  />
-    <x-heroicon-o-check x-show="clicked" @class([$iconClasses, 'text-success-500'])
-    x-tooltip="{
-        content: '{{ $success }}',
-        placement: 'right',
-        onHidden: () => { clicked = false ;}
-    }"/>
+    <x-heroicon-o-check
+        x-show="clicked"
+        @class([$iconClasses, 'text-success-500'])
+        x-tooltip="{
+            content: '{{ $success }}',
+            placement: 'right',
+            onHidden: () => { clicked = false ;}
+        }"
+    />
 </button>

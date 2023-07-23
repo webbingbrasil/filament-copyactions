@@ -7,7 +7,7 @@ use Filament\Tables\Columns\TextColumn;
 
 class CopyableTextColumn extends TextColumn
 {
-    protected string | Closure | null $icon = 'heroicon-o-clipboard-copy';
+    protected string | bool | Closure | null $icon = 'heroicon-o-clipboard-document';
 
     protected string | Closure | null $copyIconColor = null;
 
@@ -43,7 +43,7 @@ class CopyableTextColumn extends TextColumn
 
     public function getCopyableText(): ?string
     {
-        $state = $this->getFormattedState();
+        $state = $this->formatState($this->getState());
         $copyDescription = (bool) $this->evaluate($this->copyWithDescription);
         if ($copyDescription) {
             $state = implode("\r\n", array_filter([
