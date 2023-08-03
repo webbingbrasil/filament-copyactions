@@ -19,8 +19,6 @@ trait HasCopyable
     {
         parent::setUp();
 
-        $successNotificationTitle = $this->getSuccessNotificationTitle();
-
         $this
             ->successNotificationTitle(__('Copied!'))
             ->icon('heroicon-o-clipboard-copy')
@@ -28,7 +26,7 @@ trait HasCopyable
                 'x-data' => '',
                 'x-on:click' => new HtmlString(
                     'window.navigator.clipboard.writeText('.Js::from($this->getCopyable()).');'
-                    . ($successNotificationTitle ? ' $tooltip('.Js::from($successNotificationTitle).');' : '')
+                    . (($title = $this->getSuccessNotificationTitle()) ? ' $tooltip('.Js::from($title).');' : '')
                 ),
             ]);
     }
