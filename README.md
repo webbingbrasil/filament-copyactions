@@ -1,5 +1,8 @@
 # Filament Copy Actions
 
+> **Note**
+> The compatible version for **Filament 3.x** it's stil in beta on **[3.x](https://github.com/webbingbrasil/filament-copyactions/tree/3.x)** branch
+
 An easy-to-use copy actions for Filament Admin
 
 - Table action to implement dynamic copy content
@@ -9,6 +12,7 @@ An easy-to-use copy actions for Filament Admin
 
 > **Note**
 > The copy will only work if the user browser supports [Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API). Also, the user must be on a secure context (HTTPS) or localhost.
+
 
 ## Installation
 
