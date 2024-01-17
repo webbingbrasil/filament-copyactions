@@ -88,7 +88,7 @@ Forms\Components\TextInput::make('sku')
     
 Forms\Components\Select::make('shop_brand_id')
     ->relationship('brand', 'name')
-    ->prefixAction(\Webbingbrasil\FilamentCopyActions\Forms\Actions\CopyAction::make())
+    ->prefixAction(CopyAction::make())
     ->searchable();
 ```
 
@@ -96,10 +96,11 @@ You can use this form action in any filament field, the action will copy the fie
 
 
 ```php
+use Webbingbrasil\FilamentCopyActions\Forms\Actions\CopyAction;
 
 Forms\Components\Select::make('shop_brand_id')
     ->relationship('brand', 'name')
-    ->prefixAction(\Webbingbrasil\FilamentCopyActions\Forms\Actions\CopyAction::make()->copyable(fn ($component) => $component->getOptionLabel()))
+    ->prefixAction(CopyAction::make()->copyable(fn ($component) => $component->getOptionLabel()))
     ->searchable();
 ```
 

@@ -21,11 +21,11 @@ trait HasCopyable
 
         $this
             ->successNotificationTitle(__('Copied!'))
-            ->icon('heroicon-o-clipboard-copy')
+            ->icon('heroicon-o-clipboard-document')
             ->extraAttributes(fn () => [
                 'x-data' => '',
                 'x-on:click' => new HtmlString(
-                    'window.navigator.clipboard.writeText('.Js::from($this->getCopyable()).');'
+                    'window.navigator.clipboard.writeText('.$this->getCopyable().');'
                     . (($title = $this->getSuccessNotificationTitle()) ? ' $tooltip('.Js::from($title).');' : '')
                 ),
             ]);
@@ -40,6 +40,10 @@ trait HasCopyable
 
     public function getCopyable(): ?string
     {
-        return $this->evaluate($this->copyable);
+        if ($this->copyable === null) {
+            return $this->evaluate(fn ($component) => '$wire.'.$component->getStatePath());
+        }
+
+        return JS::from($this->evaluate($this->copyable));
     }
 }
