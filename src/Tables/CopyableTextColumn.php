@@ -3,6 +3,7 @@
 namespace Webbingbrasil\FilamentCopyActions\Tables;
 
 use Closure;
+use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables\Columns\TextColumn;
 
 class CopyableTextColumn extends TextColumn
@@ -17,18 +18,20 @@ class CopyableTextColumn extends TextColumn
 
     public function setUp(): void
     {
-        $this->copyableState(function ($state) {
-            $copyDescription = (bool) $this->evaluate($this->copyWithDescription);
-            if ($copyDescription) {
-                $state = implode("\r\n", array_filter([
-                    $this->getDescriptionAbove(),
-                    $state,
-                    $this->getDescriptionBelow(),
-                ]));
-            }
+        $this
+            ->disabledClick(fn ($livewire) => is_a($livewire, RelationManager::class))
+            ->copyableState(function ($state) {
+                $copyDescription = (bool) $this->evaluate($this->copyWithDescription);
+                if ($copyDescription) {
+                    $state = implode("\r\n", array_filter([
+                        $this->getDescriptionAbove(),
+                        $state,
+                        $this->getDescriptionBelow(),
+                    ]));
+                }
 
-            return $state;
-        });
+                return $state;
+            });
     }
 
     public function onlyIcon(bool | Closure $isOnlyIcon = true): static
