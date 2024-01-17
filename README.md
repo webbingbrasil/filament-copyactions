@@ -13,6 +13,7 @@ An easy-to-use copy actions for Filament Admin
 > **Note**
 > The copy will only work if the user browser supports [Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API). Also, the user must be on a secure context (HTTPS) or localhost.
 
+
 ## Installation
 
 ```bash
