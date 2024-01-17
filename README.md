@@ -1,5 +1,8 @@
 # Filament Copy Actions
 
+> **Note**
+> For **Filament 2.x** use **[2.x](https://github.com/webbingbrasil/filament-copyactions/tree/2.x)** branch
+
 An easy-to-use copy actions for Filament Admin
 
 - Table action to implement dynamic copy content
