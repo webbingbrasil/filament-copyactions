@@ -40,10 +40,6 @@ trait HasCopyable
 
     public function getCopyable(): ?string
     {
-        if ($this->copyable === null) {
-            return $this->evaluate(fn ($component) => '$wire.'.$component->getStatePath());
-        }
-
         return JS::from($this->evaluate($this->copyable));
     }
 }
