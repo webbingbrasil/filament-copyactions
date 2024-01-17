@@ -20,6 +20,7 @@ trait HasCopyable
         parent::setUp();
 
         $this
+            ->dispatch('FilamentCopyActions')
             ->successNotificationTitle(__('Copied!'))
             ->icon('heroicon-o-clipboard-document')
             ->extraAttributes(fn () => [
@@ -29,6 +30,12 @@ trait HasCopyable
                     . (($title = $this->getSuccessNotificationTitle()) ? ' $tooltip('.Js::from($title).');' : '')
                 ),
             ]);
+    }
+
+    public function action(Closure | string | null $action): static
+    {
+        $this->dispatch(null);
+        return parent::action($action);
     }
 
     public function copyable(Closure | string | null $copyable): self

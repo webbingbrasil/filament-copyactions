@@ -125,6 +125,18 @@ protected function getActions(): array
 
 The action will display a copy status, you can customize the success message with the `successNotificationMessage` method or the error message with the `errorNotificationMessage` method.
 
+### CopyAction Tip
+
+By default, CopyAction does not trigger a livewire request, so it only returns the value defined in the copyable method during page rendering.
+
+However, if it is necessary for the copied value to be dynamic at each action trigger, you can use the `action()` method.
+
+```php
+CopyAction::make()->copyable(fn () => $this->voucher)->action(fn() => $this->generateVoucher()),
+```
+
+You can use this technique in actions for form, pages, or tables.
+
 ## Credits
 
 -   [Danilo Andrade](https://github.com/dmandrade)
