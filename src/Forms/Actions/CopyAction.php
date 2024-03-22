@@ -17,6 +17,6 @@ class CopyAction extends BaseAction
             return $this->evaluate(fn ($component) => '$wire.'.$component->getStatePath());
         }
 
-        return parent::getDefaultCopyable();
+        return $this->getDefaultCopyable();
     }
 }
