@@ -10,7 +10,7 @@ class CopyableTextColumn extends TextColumn
 {
     protected string $view = 'filament-copyactions::columns.copyable-text-column';
 
-    protected string | bool | Closure | null $icon = 'heroicon-o-clipboard-document';
+    protected string | \BackedEnum | bool | Closure | null $icon = 'heroicon-o-clipboard-document';
 
     protected bool | Closure $copyWithDescription = false;
 
