@@ -3,6 +3,7 @@
 namespace Webbingbrasil\FilamentCopyActions\Concerns;
 
 use Closure;
+use Filament\Forms\Components\Field;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Js;
 
@@ -20,22 +21,25 @@ trait HasCopyable
         parent::setUp();
 
         $this
-            ->dispatch('FilamentCopyActions')
+            ->alpineClickHandler($this->getCopyableClickHandler())
             ->successNotificationTitle(__('Copied!'))
-            ->icon('heroicon-o-clipboard-document')
-            ->extraAttributes(fn () => [
-                'x-data' => '',
-                'x-on:click' => new HtmlString(
-                    'window.navigator.clipboard.writeText('.$this->getCopyable().');'
-                    . (($title = $this->getSuccessNotificationTitle()) ? ' $tooltip('.Js::from($title).');' : '')
-                ),
-            ]);
+            ->icon('heroicon-o-clipboard-document');
     }
 
-    public function action(Closure | string | null $action): static
+    public function getCopyableClickHandler(): Closure
     {
-        $this->dispatch(null);
-        return parent::action($action);
+        return function ($component) {
+
+            $writeText = 'event.currentTarget.dataset.copyable';
+            if ($component instanceof Field) {
+                $writeText .= ' ?? $wire.' .$component->getStatePath();
+            }
+
+            return new HtmlString(
+                'window.navigator.clipboard.writeText('.$writeText.');'
+                . (($title = $this->getSuccessNotificationTitle()) ? ' $tooltip('.Js::from($title).');' : '')
+            );
+        };
     }
 
     public function copyable(Closure | string | null $copyable): self
@@ -47,6 +51,15 @@ trait HasCopyable
 
     public function getCopyable(): ?string
     {
-        return JS::from($this->evaluate($this->copyable));
+        return $this->evaluate($this->copyable);
+    }
+
+    public function toHtml(): string
+    {
+        $this->extraAttributes([
+            'data-copyable' => $this->getCopyable(),
+        ], true);
+
+        return parent::toHtml();
     }
 }

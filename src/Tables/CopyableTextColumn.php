@@ -5,21 +5,17 @@ namespace Webbingbrasil\FilamentCopyActions\Tables;
 use Closure;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables\Columns\TextColumn;
+use BackedEnum;
 
 class CopyableTextColumn extends TextColumn
 {
-    protected string $view = 'filament-copyactions::columns.copyable-text-column';
-
-    protected string | bool | Closure | null $icon = 'heroicon-o-clipboard-document';
-
     protected bool | Closure $copyWithDescription = false;
-
-    protected bool | Closure $isOnlyIcon = false;
 
     public function setUp(): void
     {
         $this
-            ->disabledClick(fn ($livewire) => is_a($livewire, RelationManager::class))
+            ->copyable(true)
+            ->icon('heroicon-o-clipboard-document')
             ->copyableState(function ($state) {
                 $copyDescription = (bool) $this->evaluate($this->copyWithDescription);
                 if ($copyDescription) {
@@ -34,16 +30,13 @@ class CopyableTextColumn extends TextColumn
             });
     }
 
+    /**
+     * @deprecated To maintain maximum compatibility with Filament 4.x native TextColumn, this method is deprecated.
+     * Use CopyAction instead.
+     */
     public function onlyIcon(bool | Closure $isOnlyIcon = true): static
     {
-        $this->isOnlyIcon = $isOnlyIcon;
-
         return $this;
-    }
-
-    public function isOnlyIcon(): bool
-    {
-        return $this->evaluate($this->isOnlyIcon);
     }
 
     public function copyWithDescription(bool | Closure $copyWithDescription = true): self

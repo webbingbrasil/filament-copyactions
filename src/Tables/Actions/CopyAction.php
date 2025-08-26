@@ -2,10 +2,12 @@
 
 namespace Webbingbrasil\FilamentCopyActions\Tables\Actions;
 
-use Webbingbrasil\FilamentCopyActions\Concerns\HasCopyable;
-use Filament\Tables\Actions\Action as BaseAction;
+use Webbingbrasil\FilamentCopyActions\Actions\CopyAction as BaseAction;
 
+/**
+ * @deprecated Use \Webbingbrasil\FilamentCopyActions\Actions\CopyAction instead.
+ * @see \Webbingbrasil\FilamentCopyActions\Actions\CopyAction
+ */
 class CopyAction extends BaseAction
 {
-    use HasCopyable;
 }
