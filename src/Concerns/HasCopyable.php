@@ -3,8 +3,7 @@
 namespace Webbingbrasil\FilamentCopyActions\Concerns;
 
 use Closure;
-use Filament\Forms\Components\Field;
-use Filament\Infolists\Components\Entry;
+use Filament\Schemas\Components\Component;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Js;
 
@@ -39,11 +38,8 @@ trait HasCopyable
         return function ($component) {
 
             $writeText = 'event.currentTarget.dataset.copyable';
-            if ($component instanceof Field) {
+            if ($component instanceof Component) {
                 $writeText = '$state';
-            }
-            if ($component instanceof Entry) {
-                $writeText = Js::from($component->getState());
             }
 
             return new HtmlString(
