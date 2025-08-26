@@ -27,10 +27,10 @@ trait HasCopyable
             ->icon('heroicon-o-clipboard-document');
     }
 
-    public function alpineClickHandler(string | Closure | null $handler): static
+    public function action(Closure | string | null $action): static
     {
-        $this->alpineClickHandler = $handler;
-
+        parent::action($action);
+        $this->livewireClickHandlerEnabled(true);
         return $this;
     }
 
@@ -40,14 +40,15 @@ trait HasCopyable
 
             $writeText = 'event.currentTarget.dataset.copyable';
             if ($component instanceof Field) {
-                $writeText .= ' ?? $wire.' .$component->getStatePath();
+                $writeText = '$state';
             }
             if ($component instanceof Entry) {
                 $writeText = Js::from($component->getState());
             }
 
             return new HtmlString(
-                'window.navigator.clipboard.writeText('.$writeText.');'
+                "console.log('ok');".
+                "window.navigator.clipboard.writeText(".$writeText.");"
                 . (($title = $this->getSuccessNotificationTitle()) ? ' $tooltip('.Js::from($title).');' : '')
             );
         };
