@@ -57,7 +57,8 @@ The package provides a single action class `Webbingbrasil\FilamentCopyActions\Ac
 
 - As a Page Action to add copy functionality to any page
 - As a Table Action to copy data from table records 
-- As a Form Action to copy field values
+- As a Form Action to copy field values (algo in Placeholder)
+- InfoList, TextEntry, Entry...
 
 This unified approach simplifies usage while maintaining consistent behavior across your application. The action inherits all customization options from Filament's base Action class.
 
