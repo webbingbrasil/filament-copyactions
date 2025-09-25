@@ -36,15 +36,20 @@ class CopyAction extends Action
 
     public function getCopyableClickHandler(): Closure
     {
-        return function ($component) {
+        return function (array $arguments, $component) {
 
             $writeText = 'event.currentTarget.dataset.copyable';
-            if ($component instanceof Component) {
+            if ($component instanceof Component && $this->copyable === null) {
                 $writeText = '$state';
+                if (isset($arguments['item'])) {
+                    $writeText .= '['.Js::from($arguments['item']).']';
+                }
             }
 
             return new HtmlString(
-                "window.navigator.clipboard.writeText(".$writeText.");"
+                "((t)=>window.navigator.clipboard.writeText("
+  . "(typeof t==='object'&&t?Object.entries({...t}).map(([k,v])=>k+': '+(v==null?'null':(typeof v==='object'?JSON.stringify(v):String(v)))).join('\\r\\n'):String(t)"
+  . ")))(" . $writeText . ");"
                 . (($title = $this->getSuccessNotificationTitle()) ? ' $tooltip('.Js::from($title).');' : '')
             );
         };
