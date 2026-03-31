@@ -1,10 +1,9 @@
 # Filament Copy Actions
 
-> **Note**
-> For **Filament 3.x** use **[3.x](https://github.com/webbingbrasil/filament-copyactions/tree/3.x)** branch
-> For **Filament 2.x** use **[2.x](https://github.com/webbingbrasil/filament-copyactions/tree/2.x)** branch
-
 An easy-to-use copy actions for Filament Admin
+
+
+## Features
 
 - Table action to implement dynamic copy content
 - Form action to use with any field
@@ -17,9 +16,22 @@ An easy-to-use copy actions for Filament Admin
 
 ## Installation
 
+Use the [Filament compatibility](#filament-compatibility) table to choose the right version constraint for your app.
+
 ```bash
 composer require webbingbrasil/filament-copyactions
 ```
+
+### Filament compatibility
+
+Pick the plugin version that match your Filament major version.
+
+| Version | Filament (`filament/filament`) | PHP |
+| --- | --- | --- |
+| `^4.0` | `^4.0` or `^5.0` | `^8.2` |
+| `^3.0` | `^3.0` | `^8.0` |
+| `^2.0` | `^2.16` | `^8.0` |
+| `^1.0` | `^2.15` | `^8.0` |
 
 ## Usage
 
